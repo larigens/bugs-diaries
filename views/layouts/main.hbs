@@ -37,10 +37,14 @@
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
                     </ul>
+                    {{#if req.session.logged_in}}
                     <ul class="d-flex">
                         <li class="nav-item">
                             <a class="nav-link logs" href="/logout">Logout</a>
                         </li>
+                    </ul>
+                    {{/if}}
+                    <ul class="d-flex">
                         <li class="nav-item">
                             <a class="nav-link logs" href="/login">Login</a>
                         </li>

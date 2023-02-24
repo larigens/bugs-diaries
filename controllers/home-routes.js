@@ -3,42 +3,42 @@ const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // // GET Route for home page.
-router.get('/', async (req, res) => {
-    try {
-        // Logs the request to the terminal.
-        console.info(`${req.method} request received for ${req.path}`);
-        res.render('homepage');
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-// // GET all posts for homepage
 // router.get('/', async (req, res) => {
 //     try {
-//         const postsData = await Post.findAll({
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['username'],
-//                 },
-//             ],
-//         });
-
-//         const posts = postsData.map((post) =>
-//             post.get({ plain: true })
-//         );
-
-//         res.render('homepage', {
-//             posts,
-//             loggedIn: req.session.loggedIn,
-//         });
+//         // Logs the request to the terminal.
+//         console.info(`${req.method} request received for ${req.path}`);
+//         res.render('homepage');
 //     } catch (err) {
 //         console.log(err);
 //         res.status(500).json(err);
 //     }
 // });
+
+// // GET all posts for homepage
+router.get('/', async (req, res) => {
+    try {
+        const postsData = await Post.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+
+        const posts = postsData.map((post) =>
+            post.get({ plain: true })
+        );
+
+        res.render('homepage', {
+            posts,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 // GET Route for signup page.
 router.get('/signup', async (req, res) => {
@@ -76,7 +76,21 @@ router.get('/dashboard', withAuth, async (req, res) => {
     try {
         // Logs the request to the terminal.
         console.info(`${req.method} request received for ${req.path}`);
-        res.render('dashboard');
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// GET Route for logout page.
+router.get('/logout', async (req, res) => {
+    try {
+        req.session.destroy(function (err) {
+            res.redirect('/');
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
