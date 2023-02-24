@@ -1,0 +1,6 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS debug_diaries;
+
+-- CREATE DATABASE
+CREATE DATABASE debug_diaries;
+
