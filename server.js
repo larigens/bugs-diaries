@@ -3,16 +3,18 @@ const express = require('express'); // Framework for Node.js.
 const session = require('express-session'); // Package to add authentication.
 const exphbs = require('express-handlebars'); // View Engine.
 const routes = require('./controllers'); // Import routes.
-
 const sequelize = require('./config/connection'); // Imports sequelize connection.
 // Create a new sequelize store using the express-session package.
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helpers = require('./utils/auth'); // Import the custom helper methods.
 
 const app = express();
 const PORT = process.env.PORT || 5500;
 
 const hbs = exphbs.create({
+  helpers, // Incorporate the custom helper methods.
   layoutsDir: __dirname + '/views/layouts',
+  // partialsDir: __dirname + '/views/partials',
   extname: 'hbs', // Changes the extension of the files to hbs.
 });
 

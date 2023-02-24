@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 
         res.render('homepage', {
             posts,
-            loggedIn: req.session.loggedIn,
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         console.log(err);
@@ -77,7 +77,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         // Logs the request to the terminal.
         console.info(`${req.method} request received for ${req.path}`);
         res.render('dashboard', {
-            loggedIn: req.session.loggedIn,
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         console.log(err);
