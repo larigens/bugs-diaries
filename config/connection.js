@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
+const Sequelize = require("sequelize"); // to connect to the MySQL database.
+require("dotenv").config(); // to use environment variables.
 
-// Create a connection object
+// Creates a connection object.
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(

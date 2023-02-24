@@ -1,16 +1,16 @@
-// Initialize Packages
-const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const exphbs = require('express-handlebars');
-const sequelize = require('./config/connection'); // Imports sequelize connection.
-// Create a new sequelize store using the express-session package
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const path = require('path');
+const express = require('express'); // Framework for Node.js.
+const session = require('express-session'); // Package to add authentication.
+const exphbs = require('express-handlebars'); // View Engine.
+const routes = require('./controllers'); // Import routes.
 
+const sequelize = require('./config/connection'); // Imports sequelize connection.
+// Create a new sequelize store using the express-session package.
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const PORT = process.env.PORT || 5500;
 const app = express();
+const PORT = process.env.PORT || 5500;
+
 const hbs = exphbs.create({
   layoutsDir: __dirname + '/views/layouts',
   extname: 'hbs', // Changes the extension of the files to hbs.
@@ -28,20 +28,16 @@ const sess = {
 
 // Define the middleware.
 app.use(session(sess)) // Stores user data between HTTP requests. It creates a new session for the user and assigns them a cookie. 
-// Parsing the incoming request bodies in a middleware before you handle it.
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(express.urlencoded({ extended: true }));
-// Serve static files. 
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'hbs'); // Set Handlebars as the default template engine.
 app.engine('hbs', hbs.engine); // Sets handlebars configurations.
 
+app.use(express.json()); // Parsing the incoming request bodies in a middleware before you handle it.
+app.use(express.urlencoded({ extended: true })); // Allows for rich objects and arrays to be encoded into the URL-encoded format.
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files. 
+
 // Turn on routes.
-// app.use(routes);
+app.use(routes);
 
 // Syncs sequelize models to the database, then starts the Express.js server.
 sequelize.sync({ force: false }).then(() => {
