@@ -1,7 +1,349 @@
+/* Pseudo-class that matches the root element of the document. */
+:root {
+    --dark-shades: #240046;
+    --dark-accent: #6444c3;
+    --main-brand: #49d3f4;
+    --light-accent: #f0a0cf;
+    --light-shades: #f6eef3;
+    --gradient-dark: linear-gradient(45deg, var(--dark-shades), var(--light-accent), var(--dark-accent));
+    --gradient: linear-gradient(45deg, var(--main-brand), var(--light-accent), var(--dark-accent));
+    --heading: 'Shantell Sans', cursive;
+    --body: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--light-shades);
+    font-family: var(--body);
+    color: var(--dark-shades);
+}
+
+/* Displays smooth transitions between the three specified colors - The linear gradient goes diagonally as defined by the 45 degrees */
+header,
+.btn {
+    background: var(--gradient-dark);
+}
+
+a {
+    /* Removes the underline default for anchors tags */
+    text-decoration: none;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.navbar-brand,
+h1,
+h2,
+h4 {
+    font-family: var(--heading);
+}
+
+/* When hovering, the link color will change to smooth transitions between the three specified colors */
+.navbar-brand,
+i,
+.nav-link:hover,
+h1,
+.links:hover,
+.diary-name,
+.read-more:hover,
+h2,
+.log {
+    background: -webkit-linear-gradient(45deg, var(--dark-accent), var(--light-accent), var(--main-brand));
+    /* Need to set that is a text you are removing the background / color or the gradient won't work */
+    -webkit-background-clip: text;
+    background-clip: none;
+    /* Text-fill needs to be transparent to show the gradient */
+    -webkit-text-fill-color: transparent;
+}
+
+i {
+    margin-left: 10px;
+    font-size: 28px;
+}
+
 li {
     list-style: none;
 }
 
-.logs {
-    padding-right: 20px;
+.nav-link {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    font-weight: 600;
+}
+
+.nav-link,
+.btn,
+.glowing-btn:hover {
+    color: var(--light-shades);
+}
+
+h1 {
+    margin-top: 13px;
+    margin-left: 20px;
+    font-size: 35px;
+}
+
+img {
+    border-radius: 180px;
+}
+
+.links,
+.btn {
+    border: none;
+    overflow: hidden;
+    outline: none;
+}
+
+.HTML {
+    margin-top: 80px !important;
+}
+
+.diary-card {
+    border-radius: 30px;
+    box-shadow: 0 5px 8px var(--light-accent);
+}
+
+.diary-name {
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.diary-sub {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--dark-accent);
+}
+
+.read-more,
+.glowing-btn {
+    color: var(--light-accent);
+}
+
+.lead {
+    font-size: 16px;
+}
+
+/* Debug button */
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+.glowing-btn {
+    position: relative;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    padding: 3px 10px;
+    border: 2px solid var(--light-accent);
+    border-radius: 0.45em;
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    letter-spacing: 17px;
+
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--light-accent),
+        0px 0px 0.5em 0px var(--light-accent);
+    -moz-box-shadow: inset 0px 0px 0.5em 0px var(--light-accent),
+        0px 0px 0.5em 0px var(--light-accent);
+    box-shadow: inset 0px 0px 0.5em 0px var(--light-accent),
+        0px 0px 0.5em 0px var(--light-accent);
+    animation: border-flicker 2s linear infinite;
+}
+
+.glowing-txt {
+    float: left;
+    margin-right: -0.8em;
+    -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--light-accent);
+    -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em var(--light-accent);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--light-accent);
+    animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+    opacity: 0.7;
+    filter: blur(1em);
+    transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+    background: var(--light-accent);
+    pointer-events: none;
+}
+
+.glowing-btn::before,
+.glowing-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.45em;
+}
+
+.glowing-btn::after {
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--light-accent);
+    box-shadow: 0 7px 10px var(--light-accent);
+    transition: opacity 100ms linear;
+    padding: 5px 12px;
+}
+
+
+.glowing-btn:hover {
+    padding: 5px 12px;
+    text-shadow: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+    color: var(--light-accent);
+    text-shadow: 2px 2px var(--light-shades);
+}
+
+.glowing-btn:hover,
+.glowing-btn:hover .glowing-txt,
+.glowing-btn:hover .faulty-letter {
+    animation: none;
+    border: none;
+}
+
+.glowing-btn:hover:before {
+    filter: blur(1.5em);
+}
+
+.glowing-btn:hover,
+.glowing-btn:hover .faulty-letter,
+.glowing-btn:hover:before,
+.glowing-btn:hover:after {
+    opacity: 1;
+}
+
+@keyframes faulty-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 0.1;
+    }
+
+    4% {
+        opacity: 0.5;
+    }
+
+    19% {
+        opacity: 0.5;
+    }
+
+    21% {
+        opacity: 0.1;
+    }
+
+    23% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    83% {
+        opacity: 0.4;
+    }
+
+    87% {
+        opacity: 1;
+    }
+}
+
+@keyframes text-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    8% {
+        opacity: 0.1;
+    }
+
+    9% {
+        opacity: 1;
+    }
+
+    12% {
+        opacity: 0.1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.3;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    72% {
+        opacity: 0.2;
+    }
+
+    77% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes border-flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    2% {
+        opacity: 1;
+    }
+
+    4% {
+        opacity: 0.1;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .glowing-btn {
+        font-size: 1em;
+    }
 }

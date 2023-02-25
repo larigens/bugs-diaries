@@ -1,16 +1,23 @@
-<div class="jumbotron jumbotron-fluid p-1 bg-light mb-5">
+<div class="jumbotron jumbotron-fluid p-1 mb-5">
     <div class="container">
-        <h1 class="display-4 mb-3 mt-2"> De-buggers Hall of Fame </h1>
-        <div class="m-3 text-center rounded-circle">
-            <iframe src="https://giphy.com/embed/h408T6Y5GfmXBKW62l" width="480" height="426" frameBorder="0"
-                class="giphy-embed" allowFullScreen></iframe>
+        <h1 class="display-4 text-center mt-5"> De-buggers Hall of Fame </h1>
+        <div class="text-center">
+            <img src="https://media0.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e472z9gid0fcuxula51o3g14eu3z3hcflaql83ww7o2&rid=giphy.gif&ct=g"
+                width="250" height="250" />
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div>
-        <a href="/dashboard" class="btn p-3 d-flex justify-content-center flex-nowrap mb-3 mt-3"> Check us out! </a>
-        <a href="/signup" class="btn p-3 d-flex justify-content-center flex-nowrap mb-5"> Join our team! </a>
+<div class="container d-flex">
+    <div class="hstack gap-2 col-md-5 mb-2 mx-auto justify-content-center">
+        <a href="/dashboard" class="links btn w-50 p-3"> Check us out!<i class="fa fa-bug" aria-hidden="true"></i> </a>
+        <div class="vr"></div>
+        <a href="/signup" class="links btn w-50 p-3"> Join our team!<i class="fa fa-bug" aria-hidden="true"></i> </a>
     </div>
+</div>
+
+<div class="'container">
+    {{#each diaries as |diary|}}
+    {{> diary-details}}
+    {{/each}}
 </div>

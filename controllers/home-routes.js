@@ -1,39 +1,118 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Diary } = require('../models');
 const withAuth = require('../utils/auth');
 
-// // GET Route for home page.
-// router.get('/', async (req, res) => {
-//     try {
-//         // Logs the request to the terminal.
-//         console.info(`${req.method} request received for ${req.path}`);
-//         res.render('homepage');
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
-// // GET all posts for homepage
+// // GET all diaries for homepage
 router.get('/', async (req, res) => {
     try {
-        const postsData = await Post.findAll({
+        const diariesData = await Diary.findAll({
             include: [
+                {
+                    model: Post,
+                    attributes: ['title', 'content'],
+                },
+            ],
+        });
+        const diaries = diariesData.map((diary) =>
+            diary.get({ plain: true })
+        );
+        res.render('homepage', {
+            diaries,
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// Get diary
+router.get('/diary', async (req, res) => {
+    try {
+        const diariesData = await Diary.findAll({
+            include: [
+                {
+                    model: Post,
+                    attributes: ['title', 'content', 'date', 'user_id'],
+                },
+            ],
+        });
+        const diaries = diariesData.map((diary) =>
+            diary.get({ plain: true }),
+        );
+        res.render('diary', {
+            diaries,
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// GET one diary
+router.get('/diary/:id', withAuth, async (req, res) => {
+    try {
+        const diaryData = await Diary.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Post,
+                    attributes: ['title', 'content', 'date'],
+                },
                 {
                     model: User,
                     attributes: ['username'],
                 },
             ],
         });
+        const diaries = diaryData.get({ plain: true });
+        res.render('diary', { diaries });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
-        const posts = postsData.map((post) =>
-            post.get({ plain: true })
+router.get('/post', async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+                {
+                    model: Diary,
+                    attributes: ['name'],
+                },
+            ],
+        });
+        const posts = postData.map((post) =>
+            post.get({ plain: true }),
         );
-
-        res.render('homepage', {
+        res.render('post', {
             posts,
             logged_in: req.session.logged_in,
         });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+// GET one post
+router.get('/post/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id);
+        const posts = postData.get({ plain: true });
+        const user = await User.findByPk({
+            attributes: {
+                include: [[sequelize.literal(
+                    `(SELECT username FROM user WHERE id = ${postData.user_id})`
+                ), 'username']]
+            }
+        })
+        res.render('post', { posts, user });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5500;
 const hbs = exphbs.create({
   helpers, // Incorporate the custom helper methods.
   layoutsDir: __dirname + '/views/layouts',
-  // partialsDir: __dirname + '/views/partials',
+  partialsDir: __dirname + '/views/partials',
   extname: 'hbs', // Changes the extension of the files to hbs.
 });
 
