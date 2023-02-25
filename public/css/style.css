@@ -47,6 +47,7 @@ i,
 h1,
 .links:hover,
 .diary-name,
+.post-title,
 .read-more:hover,
 h2,
 .log {
@@ -127,6 +128,10 @@ img {
 
 .lead {
     font-size: 16px;
+}
+
+.post-title {
+    font-size: 20px;
 }
 
 /* Debug button */

@@ -17,11 +17,11 @@ User.hasMany(Post, {
     onDelete: "CASCADE",
 });
 
-// Post belongsToMany Diaries (through PostDiary).
-Post.belongsToMany(Diary, { through: PostDiary, foreignKey: "post_id" });
-
 // Diary belongsToMany Posts (through PostDiary).
-Diary.belongsToMany(Post, { through: PostDiary, foreignKey: "diary_id" });
+Diary.belongsToMany(Post, { through: PostDiary, as: "posts" });
+
+// Post belongsToMany Diaries (through PostDiary).
+Post.belongsToMany(Diary, { through: PostDiary, as: "diaries" });
 
 module.exports = {
     Post,

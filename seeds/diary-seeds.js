@@ -2,16 +2,16 @@ const { Diary } = require('../models'); // Imports the models.
 
 const diariesData = [
     {
-        name: 'HTML',
+        diary_name: 'HTML',
     },
     {
-        name: 'CSS',
+        diary_name: 'CSS',
     },
     {
-        name: 'JavaScript',
+        diary_name: 'JavaScript',
     },
     {
-        name: 'NodeJS',
+        diary_name: 'NodeJS',
     }
 ];
 

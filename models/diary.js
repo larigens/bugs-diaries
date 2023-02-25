@@ -13,10 +13,10 @@ Diary.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        diary_name: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
+        }
     },
     {
         sequelize, // Links to database connection.

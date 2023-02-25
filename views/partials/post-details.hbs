@@ -1,14 +1,15 @@
-<section class="d-flex justify-content-center">
-    <a href="/post/{{id}}" class="card-text read-more">
+<div class="d-flex justify-content-center">
+    <a class="card-text read-more">
         <div class="card pb-0 m-4 w-50 post-card {{title}} ">
             <div class="card-body m-1">
-                <a class="card-title post-title">{{title}}</a>
-                <h4 class="card-subtitle mt-2 mb-3 pb-2 border-bottom border-2 post-sub">Bugs Diaries Nº{{id}}</h4>
+                <a href="/post/{{id}}" class="card-title post-title">{{title}}</a>
+                <h4 class="card-subtitle mt-3 mb-3 pb-2 border-bottom border-2 diary-sub"> Debugged by:
+                    {{user.username}}
+                </h4>
             </div>
-            <div class="d-flex justify-content-end mb-3 me-2">
+            <div class="d-flex justify-content-start mb-3 me-2 ms-4">
                 <p class="card-text">{{content}}</p>
-                <p>By: {{user}}</p>
             </div>
         </div>
     </a>
-</section>
+</div>

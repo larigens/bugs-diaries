@@ -1,4 +1,4 @@
-<h1 align="center"> Debug Diaries </h1>
+<h1 align="center"> Bugs Diaries </h1>
 
 <p align="center">
     <img src="./public/images/logo.jpeg" alt="logo" width="230px" height="180px" />
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="/"><strong> Debug Diaries Official Site </strong></a>
+  <a href="/"><strong> Bugs Diaries Official Site </strong></a>
   <br>
 </p>
 
@@ -18,11 +18,11 @@
 <div align="center">
 
 ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-red.svg)
-![Contributors](https://img.shields.io/github/contributors/larigens/debug-diaries?style=plastic&color=red)
-![Forks](https://img.shields.io/github/forks/larigens/debug-diaries?style=plastic&color=red)
-![Stars](https://img.shields.io/github/stars/larigens/debug-diaries?style=plastic&color=red)
+![Contributors](https://img.shields.io/github/contributors/larigens/bugs-diaries?style=plastic&color=red)
+![Forks](https://img.shields.io/github/forks/larigens/bugs-diaries?style=plastic&color=red)
+![Stars](https://img.shields.io/github/stars/larigens/bugs-diaries?style=plastic&color=red)
 ![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=red)
-![Issues](https://img.shields.io/github/issues/larigens/debug-diaries?style=plastic&color=red)
+![Issues](https://img.shields.io/github/issues/larigens/bugs-diaries?style=plastic&color=red)
 
 </div>
 
@@ -30,7 +30,7 @@
 
 ## Description
 
-Debug Diaries allows writers to publish, edit, and manage their articles with ease. They can format their content using a variety of styling options and add images. The site also has a commenting system that enables readers to interact with authors, ask questions, and share their thoughts.
+Bugs Diaries allows writers to publish, edit, and manage their articles with ease. They can format their content using a variety of styling options and add images. The site also has a commenting system that enables readers to interact with authors, ask questions, and share their thoughts.
 
 This blog site is constantly updated with new content, ensuring that developers always have access to the latest information on technology trends, best practices, and emerging technologies. With its rich collection of articles and resources, the CMS-style blog site for developers is an invaluable tool for anyone looking to stay informed and stay ahead in the ever-evolving world of technology.
 

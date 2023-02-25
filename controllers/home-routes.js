@@ -1,19 +1,20 @@
 const router = require('express').Router();
-const { Post, User, Diary } = require('../models');
+const { Post, User, Diary, PostDiary } = require('../models');
 const withAuth = require('../utils/auth');
 
 // // GET all diaries for homepage
 router.get('/', async (req, res) => {
     try {
-        const diariesData = await Diary.findAll({
+        const diaryData = await Diary.findAll({
             include: [
                 {
                     model: Post,
-                    attributes: ['title', 'content'],
+                    as: 'posts',
+                    through: { attributes: [] } // This will exclude the PostDiary join table attributes from the query result
                 },
             ],
         });
-        const diaries = diariesData.map((diary) =>
+        const diaries = diaryData.map((diary) =>
             diary.get({ plain: true })
         );
         res.render('homepage', {
@@ -33,13 +34,17 @@ router.get('/diary', async (req, res) => {
             include: [
                 {
                     model: Post,
-                    attributes: ['title', 'content', 'date', 'user_id'],
-                },
+                    as: 'posts',
+                    through: { attributes: [] }, // This will exclude the PostDiary join table attributes from the query result
+                    include: [{ model: User }]
+                }
             ],
         });
-        const diaries = diariesData.map((diary) =>
-            diary.get({ plain: true }),
-        );
+        const diaries = diariesData.map((diary) => {
+            const diaryObj = diary.get({ plain: true });
+            const username = diaryObj.posts[0].user.username;
+            return { ...diaryObj, user_id: username };
+        });
         res.render('diary', {
             diaries,
             logged_in: req.session.logged_in,
