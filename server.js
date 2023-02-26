@@ -7,6 +7,7 @@ const sequelize = require('./config/connection'); // Imports sequelize connectio
 // Create a new sequelize store using the express-session package.
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./utils/auth'); // Import the custom helper methods.
+require("dotenv").config(); // To use environment variables.
 
 const app = express();
 const PORT = process.env.PORT || 5500;
@@ -18,8 +19,9 @@ const hbs = exphbs.create({
   extname: 'hbs', // Changes the extension of the files to hbs.
 });
 
+// Set up session middleware.
 const sess = {
-  secret: 'session_cookie_secret',
+  secret: process.env.SESSION_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: false,

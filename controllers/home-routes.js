@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Post, User, Diary, PostDiary } = require('../models');
+const { Post, User, Diary } = require('../models');
 const withAuth = require('../utils/auth');
 
-// // GET all diaries for homepage
+// // GET all diaries for homepage.
 router.get('/', async (req, res) => {
     try {
         const diaryData = await Diary.findAll({
@@ -10,149 +10,79 @@ router.get('/', async (req, res) => {
                 {
                     model: Post,
                     as: 'posts',
-                    through: { attributes: [] } // This will exclude the PostDiary join table attributes from the query result
+                    through: { attributes: [] } // This will exclude the PostDiary join table attributes from the query result.
                 },
             ],
         });
-        const diaries = diaryData.map((diary) =>
-            diary.get({ plain: true })
-        );
-        res.render('homepage', {
-            diaries,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        const diaries = diaryData.map((diary) => diary.get({ plain: true }));
+        res.render('homepage', { diaries, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
 });
 
-// Get diary
-router.get('/diary', async (req, res) => {
+// Get all diaries with more details for users who are logged in.
+router.get('/diaries', withAuth, async (req, res) => {
     try {
         const diariesData = await Diary.findAll({
             include: [
-                {
-                    model: Post,
-                    as: 'posts',
-                    through: { attributes: [] }, // This will exclude the PostDiary join table attributes from the query result
-                    include: [{ model: User }]
-                }
+                { model: Post, as: 'posts', through: { attributes: [] }, include: [{ model: User }] }
             ],
         });
         const diaries = diariesData.map((diary) => {
             const diaryObj = diary.get({ plain: true });
-            const username = diaryObj.posts[0].user.username;
-            return { ...diaryObj, user_id: username };
+            const username = diaryObj.posts[0].user.username; // Extract the username from the first Post object associated with each Diary.
+            return { ...diaryObj, username: username }; // Creates and return a new object with the same properties as the original Diary object, but with an additional username property that contains the extracted username value. 
         });
-        res.render('diary', {
-            diaries,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        res.render('diaries', { diaries, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
 });
 
-// GET one diary
-router.get('/diary/:id', withAuth, async (req, res) => {
+// GET one diary.
+router.get('/diaries/:id', withAuth, async (req, res) => {
     try {
         const diaryData = await Diary.findByPk(req.params.id, {
             include: [
-                {
-                    model: Post,
-                    attributes: ['title', 'content', 'date'],
-                },
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
+                { model: Post, as: 'posts', through: { attributes: [] }, include: [{ model: User }] }
             ],
         });
-        const diaries = diaryData.get({ plain: true });
-        res.render('diary', { diaries });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        if (!diaryData) {
+            res.status(404).json({ message: "Diary not found!!" });
+            return;
+        }
+        const diary = diaryData.get({ plain: true });
+        res.render('diary', { diary, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
 });
 
-router.get('/post', async (req, res) => {
-    try {
-        const postData = await Post.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-                {
-                    model: Diary,
-                    attributes: ['name'],
-                },
-            ],
-        });
-        const posts = postData.map((post) =>
-            post.get({ plain: true }),
-        );
-        res.render('post', {
-            posts,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-// GET one post
+// GET one post.
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findByPk(req.params.id);
-        const posts = postData.get({ plain: true });
-        const user = await User.findByPk({
-            attributes: {
-                include: [[sequelize.literal(
-                    `(SELECT username FROM user WHERE id = ${postData.user_id})`
-                ), 'username']]
-            }
-        })
-        res.render('post', { posts, user });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['username'] }],
+        });
+        if (!postData) {
+            res.status(404).json({ message: "Post not found!!" });
+            return;
+        }
+        const post = postData.get({ plain: true });
+        console.log(post)
+        res.render('post', { post, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for signup page.
 router.get('/signup', async (req, res) => {
     try {
-        // Logs the request to the terminal.
-        console.info(`${req.method} request received for ${req.path}`);
+        console.info(`${req.method} request received for ${req.path}`); // Logs the request to the terminal.
         res.render('signup');
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+    } catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for login page.
 router.get('/login', async (req, res) => {
     try {
-        // Logs the request to the terminal.
-        console.info(`${req.method} request received for ${req.path}`);
-        // If the user is already logged in.
-        if (req.session.logged_in) {
-            res.redirect('/');
-            return;
-        }
-        else {
-            res.render('login');
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        console.info(`${req.method} request received for ${req.path}`); // Logs the request to the terminal.
+        res.render('login');
+    } catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for dashboard page.
@@ -160,25 +90,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
     try {
         // Logs the request to the terminal.
         console.info(`${req.method} request received for ${req.path}`);
-        res.render('dashboard', {
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        res.render('dashboard', { logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for logout page.
 router.get('/logout', async (req, res) => {
     try {
-        req.session.destroy(function (err) {
-            res.redirect('/');
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+        // Destroys the session.
+        req.session.destroy(err => { err ? res.status(500).send('Error') : res.redirect('/') });
+    } catch (err) { res.status(500).json(err) }
 });
 
 module.exports = router;

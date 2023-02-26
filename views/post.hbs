@@ -1,8 +1,18 @@
-<section class="container">
-    <section class="post">
-        <div class="post-details">
-            <h3>{{posts.title}}</h3>
-            <p>By: {{posts.user}}</p>
-            <p>By: {{user}}</p>
+<div class="d-flex justify-content-center h-100">
+    <a class="card-text read-more">
+        <div class="card pb-0 m-4 w-100 post-card {{post.title}} ">
+            <div class="card-body m-1">
+                <h2 class="card-title post-title">{{post.title}}</h2>
+                <h4 class="card-subtitle mt-3 mb-3 pb-2 border-bottom border-2 diary-sub"> Debugged by:
+                    {{post.user.username}}
+                </h4>
+            </div>
+            <div class="d-flex justify-content-start mb-3 me-2 ms-4">
+                <p class="card-text">{{post.content}}</p>
+            </div>
+            <div class="d-flex justify-content-end mb-3 me-2 ms-4">
+                <p class="card-text">{{post.date}}</p>
+            </div>
         </div>
-    </section>
+    </a>
+</div>

@@ -1,11 +1,13 @@
 <div class="container-fluid">
-    <h3 class="diary-name mt-5 ms-5 pt-4">{{diary_name}}</h3>
+    {{#each diaries as |diary|}}
+    <h3 class="diary-name mt-5 ms-5 pt-4">{{diary.diary_name}}</h3>
     <div>
-        {{#each diary.posts as |post|}}
+        {{#each posts as |post|}}
         {{> post-details}}
         <div class="d-flex justify-content-end mt-1 mb-3 me-2 w-75">
             <p class="lead">Posted on: {{date}}</p>
         </div>
     </div>
+    {{/each}}
     {{/each}}
 </div>
