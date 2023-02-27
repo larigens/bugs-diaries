@@ -1,5 +1,4 @@
 let fetchData;
-let formEl = document.getElementById('newpost');
 let diariesDiv = document.getElementById('diaries');
 let usernameEl;
 
@@ -9,23 +8,38 @@ const newpostHandler = async (event) => {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
 
-    if (title && content) {
-        const response = await fetch('/api/posts/', {
-            method: 'POST',
-            body: JSON.stringify({ title, content }),
-            headers: { 'Content-Type': 'application/json' },
-        });
+    const diariesIds = await getSelectedDiaries();
 
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            alert('Failed to share post!')
-            return;
-        }
+    const response = await fetch('/api/posts/newpost', {
+        method: 'POST',
+        body: JSON.stringify({ title, content, diariesIds }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert('Failed to share post!')
+        return;
     }
-};
+}
 
-formEl.addEventListener('submit', newpostHandler);
+function getSelectedDiaries() {
+    const diariesIdsArr = []; // Creates an empty array to store the input IDs
+    const diaries = document.getElementsByTagName('input');
+    // Convert the HTMLCollection to an array using the spread operator.
+    const diariesArr = [...diaries];
+    // Loop through each checkbox that was selected and push its ID to the array
+    diariesArr.forEach(diary => {
+      if (diary.checked) {
+        diariesIdsArr.push(diary.id);
+      }
+    });
+    return diariesIdsArr;
+  }
+  
+
+document.getElementById('newpost').addEventListener('submit', newpostHandler);
 
 if (window.location.pathname === '/newpost') {
     fetchData = '/api/diaries';
@@ -41,27 +55,6 @@ if (window.location.pathname === '/newpost') {
                     if (data !== null) {
                         console.log(data);
                         renderCheckbox(data);
-                    }
-                })
-        }
-    })
-}
-
-if (window.location.pathname === '/dashboard') {
-    fetchData = '/api/users';
-    usernameEl = document.getElementById("username-heading");
-    fetch(fetchData, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then((response) => {
-        if (response.ok) {
-            return response.json()
-                .then(function (userData) {
-                    if (userData !== null) {
-                        console.log(userData);
-                        usernameEl.textContent = (userData.username)
                     }
                 })
         }
@@ -84,27 +77,24 @@ function renderCheckbox(data) {
         var inputId = document.createAttribute("id");
         var inputClass = document.createAttribute("class");
         var inputType = document.createAttribute("type");
-        var inputName = document.createAttribute("name");
         var inputValue = document.createAttribute("value");
 
         inputId.value = (data[i].id);
         inputClass.value = "form-check-input";
-        inputType.value = "flexCheckDefault";
-        inputName.value = (data[i].diary_name);
+        inputType.value = "checkbox";
         inputValue.value = "";
 
         inputEl.setAttributeNode(inputId);
         inputEl.setAttributeNode(inputClass);
         inputEl.setAttributeNode(inputType);
-        inputEl.setAttributeNode(inputName);
         inputEl.setAttributeNode(inputValue);
 
         var labelEl = document.createElement("label");
         var labelClass = document.createAttribute("class");
         var labelFor = document.createAttribute("for");
 
-        labelClass.value = "form-check-label";
-        labelFor.value = "flexCheckDefault";
+        labelClass.value = "form-check-label dark-accent";
+        labelFor.value = (data[i].id);
         labelEl.setAttributeNode(labelClass);
         labelEl.setAttributeNode(labelFor);
 

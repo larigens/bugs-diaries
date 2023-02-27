@@ -1,7 +1,7 @@
 <h1 align="center"> Bugs Diaries </h1>
 
 <p align="center">
-    <img src="./public/images/logo.jpeg" alt="logo" width="230px" height="180px" />
+    <img src="./public/images/apple-touch-icon.png" alt="logo" width="120px" height="120px" />
   <br><br>
   <i> Share insights, tips, 
     <br> and news related to technology! </i>
@@ -17,12 +17,12 @@
 
 <div align="center">
 
-![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-red.svg)
-![Contributors](https://img.shields.io/github/contributors/larigens/bugs-diaries?style=plastic&color=red)
-![Forks](https://img.shields.io/github/forks/larigens/bugs-diaries?style=plastic&color=red)
-![Stars](https://img.shields.io/github/stars/larigens/bugs-diaries?style=plastic&color=red)
-![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=red)
-![Issues](https://img.shields.io/github/issues/larigens/bugs-diaries?style=plastic&color=red)
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-ff69b4.svg)
+![Contributors](https://img.shields.io/github/contributors/larigens/bugs-diaries?style=plastic&color=ff69b4)
+![Forks](https://img.shields.io/github/forks/larigens/bugs-diaries?style=plastic&color=ff69b4)
+![Stars](https://img.shields.io/github/stars/larigens/bugs-diaries?style=plastic&color=ff69b4)
+![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=ff69b4)
+![Issues](https://img.shields.io/github/issues/larigens/bugs-diaries?style=plastic&color=ff69b4)
 
 </div>
 
@@ -148,11 +148,11 @@ Once you run this, npm will begin the installation process of all of the current
 
 The following images shows the web application's appearance:
 
-<img src="../debug-diaries/public/images/demo1.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo1.png" alt="App Screenshot" width="600px" height="265px" />
 
-<img src="../debug-diaries/public/images/demo2.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo2.png" alt="App Screenshot" width="600px" height="265px" />
 
-<img src="../debug-diaries/public/images/demo3.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo3.png" alt="App Screenshot" width="600px" height="265px" />
 
 ## Usage
 
