@@ -6,3 +6,4 @@ const getDiary = (id) => {
 const getPost = (id) => {
     window.location.replace(`/post/${id}`)
 }
+

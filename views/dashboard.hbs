@@ -1,23 +1,26 @@
 <h2 class="ms-2 pb-2 pt-4 mb-2 mt-5 text-center display-4 heading-font gradient-text"> Bugs' Private Space </h2>
-<h4 class="ms-2 p-4 text-center dark-accent" style="letter-spacing: 0.5px;"> Welcome <span
-        class='gradient-text fw-bolder fs-2'>{{user.username}} <i class="fa fa-bug" aria-hidden="true"></i> </span>
+<h4 class="ms-2 p-4 text-center dark-accent" style="letter-spacing: 0.5px;"> Welcome
+    <span id="username-heading" class='gradient-text fw-bolder fs-2'>
+        <i class="fa fa-bug" aria-hidden="true"></i></span>
 </h4>
 
 <section class="d-flex m-4 mb-5 pb-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-10 mt-4" style="margin-right: 50px;">
+            <div class="col-10 mt-4">
                 <div class="card dashboard" style="border-radius: 15px;">
                     <div class="card-body p-4 text-center">
                         <i class="fa fa-bug gradient-text m-4" aria-hidden="true"></i>
                         <i class="fa fa-bug gradient-text m-4" aria-hidden="true"></i>
                         <i class="fa fa-bug gradient-text m-4" aria-hidden="true"></i>
                         <i class="fa fa-bug gradient-text m-4" aria-hidden="true"></i>
-                        <div class="hstack gap-2 col-md-9 p-2 mb-2 mx-auto justify-content-center pt-2 mt-4">
-                            <a href="/diaries" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-50 fw-bolder">
+                        <div class="hstack gap-2 col-md-12 p-2 mb-2 mx-auto justify-content-center pt-2 mt-4">
+                            <a href="/diaries"
+                                class="background-gradient light-hv gradient-text fs-3 btn p-3 width-50 fw-bolder">
                                 LEARN! </a>
                             <div class="vr ms-4 me-4"></div>
-                            <a href="/newpost" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-50 fw-bolder">
+                            <a href="/newpost" id="newpostBtn"
+                                class="background-gradient light-hv gradient-text fs-3 btn p-3 width-50 fw-bolder">
                                 TEACH! </a>
                         </div>
                     </div>
@@ -26,3 +29,5 @@
         </div>
     </div>
 </section>
+
+<script src="/js/newpost.js"></script>

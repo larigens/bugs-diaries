@@ -13,12 +13,16 @@
                         <h5 class="text-uppercase text-center mb-5 pt-2 gradient-text">Create an account</h5>
                         <form id="signup" name="signup" method="post" action="/signup">
                             <div class="form-outline pt-1 mb-4">
-                                <input type="text" id="username" name="username"
-                                    class="form-control form-control-lg" placeholder="Username" required />
+                                <input type="text" id="username" name="username" class="form-control form-control-lg"
+                                    placeholder="Username" required />
                             </div>
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-1">
                                 <input type="password" id="password" name="password"
                                     class="form-control form-control-lg" placeholder="Bugword" required />
+                            </div>
+                            <div id="passwordHelpBlock" class="mb-2 text-center dark-accent fs-micro form-text">
+                                Your password must be 8-20 characters long, and must not contain spaces, special
+                                characters, or emoji.
                             </div>
                             <div class="form-check d-flex justify-content-center mt-3 pt-5 mb-5">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="terms"

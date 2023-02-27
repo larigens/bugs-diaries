@@ -64,33 +64,32 @@ router.get('/post/:id', withAuth, async (req, res) => {
             return;
         }
         const post = postData.get({ plain: true });
-        console.log(post)
         res.render('post', { post, logged_in: req.session.logged_in });
     } catch (err) { res.status(500).json(err) }
 });
 
+// GET Route for newpost page.
+router.get('/newpost', withAuth, async (req, res) => {
+    try { res.render('newpost', { logged_in: req.session.logged_in }) }
+    catch (err) { res.status(500).json(err) }
+});
+
 // GET Route for signup page.
 router.get('/signup', async (req, res) => {
-    try { req.session.logged_in ? res.redirect('/') : res.render('signup') }
+    try { req.session.logged_in ? res.redirect('/dashboard') : res.render('signup') }
     catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for login page.
 router.get('/login', async (req, res) => {
-    try { req.session.logged_in ? res.redirect('/') : res.render('login') }
+    try { req.session.logged_in ? res.redirect('/dashboard') : res.render('login') }
     catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for dashboard page.
 router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-        // if (req.session.logged_in) {
-        //     const userData = await User.findByPk(req.session.user_id, { attributes: ['username'] })
-        //     const user = userData.get({ plain: true });
-        //     res.render('dashboard', { user, logged_in: req.session.logged_in });
-        // }
-        res.render('dashboard', { logged_in: req.session.logged_in });
-    } catch (err) { res.status(500).json(err) }
+    try { res.render('dashboard', { logged_in: req.session.logged_in }) }
+    catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for logout page.
