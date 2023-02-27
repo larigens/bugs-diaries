@@ -71,35 +71,32 @@ router.get('/post/:id', withAuth, async (req, res) => {
 
 // GET Route for signup page.
 router.get('/signup', async (req, res) => {
-    try {
-        console.info(`${req.method} request received for ${req.path}`); // Logs the request to the terminal.
-        res.render('signup');
-    } catch (err) { res.status(500).json(err) }
+    try { req.session.logged_in ? res.redirect('/') : res.render('signup') }
+    catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for login page.
 router.get('/login', async (req, res) => {
-    try {
-        console.info(`${req.method} request received for ${req.path}`); // Logs the request to the terminal.
-        res.render('login');
-    } catch (err) { res.status(500).json(err) }
+    try { req.session.logged_in ? res.redirect('/') : res.render('login') }
+    catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for dashboard page.
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        // Logs the request to the terminal.
-        console.info(`${req.method} request received for ${req.path}`);
+        // if (req.session.logged_in) {
+        //     const userData = await User.findByPk(req.session.user_id, { attributes: ['username'] })
+        //     const user = userData.get({ plain: true });
+        //     res.render('dashboard', { user, logged_in: req.session.logged_in });
+        // }
         res.render('dashboard', { logged_in: req.session.logged_in });
     } catch (err) { res.status(500).json(err) }
 });
 
 // GET Route for logout page.
 router.get('/logout', async (req, res) => {
-    try {
-        // Destroys the session.
-        req.session.destroy(err => { err ? res.status(500).send('Error') : res.redirect('/') });
-    } catch (err) { res.status(500).json(err) }
+    try { req.session.destroy(err => { err ? res.status(500).send('Error') : res.redirect('/') }) }
+    catch (err) { res.status(500).json(err) }
 });
 
 module.exports = router;

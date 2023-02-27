@@ -1,0 +1,38 @@
+<div class="jumbotron-fluid p-1 mt-5">
+    <div class="d-flex justify-content-center mt-4">
+        <h1 class="ms-1 dark-accent display-5"> DE <i class="fa fa-bug gradient-text ms-1 me-1" aria-hidden="true"></i>
+            <span class="gradient-text">Time</span>
+        </h1>
+    </div>
+</div>
+
+<section class="d-flex align-items-center m-4">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <form id="newpost" name="newpost" method="post" action="/newpost">
+                            <div class="form-outline pt-1 mb-4">
+                                <input type="text" id="title" name="title" class="form-control form-control-lg"
+                                    placeholder="Title" required />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <textarea type="text" id="content" name="content" class="form-control form-control-lg"
+                                    placeholder="Content" required />
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" value="newpost"
+                                    class="button-hv btn p-2 w-50 d-flex justify-content-center flex-nowrap mb-3 mt-3 background-gradient light-shades">
+                                    Share!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/newpost.js"></script>

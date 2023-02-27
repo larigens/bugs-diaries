@@ -1,25 +1,26 @@
-<div class="jumbotron jumbotron-fluid p-1 mb-5">
-    <div class="container">
-        <h1 class="display-4 text-center mt-5"> De-buggers Hall of Fame </h1>
-        <div class="text-center">
-            <img src="https://media0.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e472z9gid0fcuxula51o3g14eu3z3hcflaql83ww7o2&rid=giphy.gif&ct=g"
-                width="250" height="250" />
-        </div>
+<div class="jumbotron-fluid p-3 mb-5">
+    <h1 class="display-4 text-center m-4 mb-5 gradient-text heading-font"> The Bugs' Diaries </h1>
+    <div class="text-center m-4">
+        <img src="https://media0.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e472z9gid0fcuxula51o3g14eu3z3hcflaql83ww7o2&rid=giphy.gif&ct=g"
+            style="border-radius: 180px;" width="250" height="250" />
     </div>
 </div>
 
-<div class="container d-flex">
+<div class="d-flex mt-2">
     <div class="hstack gap-2 col-md-5 mb-2 mx-auto justify-content-center">
-        <a href="/dashboard" class="links btn w-50 p-3"> Check us out! <i class="fa fa-bug" aria-hidden="true"></i>
+        <a href="/dashboard" class="background-gradient light-hv gradient-text fs-4 btn w-50 p-3"> Check us out! <i class="fa fa-bug ms-1"
+                aria-hidden="true"></i>
         </a>
-        <div class="vr"></div>
-        <a href="/signup" class="links btn w-50 p-3"> Join our team!<i class="fa fa-bug" aria-hidden="true"></i> </a>
+        <div class="vr ms-4 me-4"></div>
+        <a href="/signup" class="background-gradient light-hv gradient-text fs-4 btn w-50 p-3"> Join our team! <i class="fa fa-bug ms-1"
+                aria-hidden="true"></i> </a>
     </div>
 </div>
 
-<div class="'container">
-    {{#each diaries as |diary|}}
-    {{> diary-details}}
-    {{/each}}
+<div class="d-flex p-3 width-100 justify-content-center">
+    <div class="row align-items-baseline">
+        {{#each diaries as |diary|}}
+        {{> diary-details}}
+        {{/each}}
+    </div>
 </div>
-
