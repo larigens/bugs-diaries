@@ -134,13 +134,6 @@ textarea {
     resize: none;
 }
 
-.delete-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
 /* Debug button */
 .glowing-btn {
     cursor: pointer;

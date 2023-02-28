@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center mt-3 pt-5">
+    <div class="card pb-0 mt-4 width-75">
+        <div id="{{post.id}}" class="card-body m-1">
+            <form id="editpost" name="editpost" method="put" action="editpost">
+                <div class="form-outline pt-1 mb-4">
+                    <input type="text" id="updatedTitle" class="form-control form-control-lg"
+                        value="{{post.title}}"></input>
+                </div>
+                <div class="form-outline mb-4">
+                    <textarea type="text" id="updatedContent"
+                        class="form-control form-control-lg">{{post.content}}</textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit"
+                        class="button-hv btn p-2 w-50 d-flex justify-content-center flex-nowrap mb-3 mt-3 background-gradient light-shades">
+                        Update!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/editpost.js"></script>
