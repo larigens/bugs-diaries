@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="/"><strong> Bugs Diaries Official Site </strong></a>
+  <a href="https://bugs-diaries.herokuapp.com/"><strong> Bugs Diaries Official Site </strong></a>
   <br>
 </p>
 
@@ -30,9 +30,9 @@
 
 ## Description
 
-Bugs Diaries allows writers to publish, edit, and manage their articles with ease. They can format their content using a variety of styling options and add images. The site also has a commenting system that enables readers to interact with authors, ask questions, and share their thoughts.
+Bugs Diaries allows writers to publish, edit, and manage their articles with ease. They can format their content using a variety of styling options. The site also has a commenting system that enables readers to interact with authors, ask questions, and share their thoughts.
 
-This blog site is constantly updated with new content, ensuring that developers always have access to the latest information on technology trends, best practices, and emerging technologies. With its rich collection of articles and resources, the CMS-style blog site for developers is an invaluable tool for anyone looking to stay informed and stay ahead in the ever-evolving world of technology.
+This blog site is constantly updated with new content, ensuring that developers always have access to the latest information on technology trends, best practices, and emerging technologies. With its rich collection of articles, the Bugs Diaries site is an invaluable tool for anyone looking to stay informed and stay ahead in the ever-evolving world of technology.
 
 ## Table of Contents
 
@@ -44,9 +44,6 @@ This blog site is constantly updated with new content, ensuring that developers 
   - [Setting Up](#setting-up)
 - [Mock-Up](#mock-up)
 - [Usage](#usage)
-- [Tests](#tests)
-  - [Prerequisites](#prerequisites-1)
-  - [Running Tests](#running-tests)
 - [Questions](#questions)
 - [Contributing](#contributing)
   - [Contributing Guidelines](#contributing-guidelines)
@@ -161,34 +158,15 @@ Launch the application by entering the command below on your terminal:
 ```bash
 npm start
 ```
-
-If you need more guidance on how to use Debug Diaries, click [here]() for the tutorial!
-
-## Tests
-
-### Prerequisites
-
-To test this application, you will need to install [Postman API](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/download).
-
-### Running Tests
-
-Open your terminal, make sure you are in the directory of this application and type the command below to seed data to the database so that you can test the routes.
-
-```bash
-npm run seed
-```
-
-The following animation shows the application's **GET** routes - being tested in Insomnia:
-
-![In Insomnia, the user tests “GET"](../debug-diaries/public/images/test.png)
-
+And then have fun in your browser!
 
 ## Questions
 
 For questions and support feel free to contact me via:
 
-<a href="mailto:larigens@gmail.com">📧 Email Larissa Guilherme </a>
+<a href="mailto:larigens@gmail.com">📧 Email </a>
 
+<a href="https://github.com/larigens">🐈‍⬛ GitHub </a>
 
 ## Contributing
 
