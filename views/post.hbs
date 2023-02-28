@@ -1,16 +1,53 @@
 <div class="d-flex justify-content-center mt-5 pt-5">
-        <div class="card pb-0 mt-4 width-75">
-            <div class="card-body m-1">
-                <h2 class="card-title gradient-text">{{post.title}}</h2>
-                <h5 class="card-subtitle mt-3 mb-3 pb-2 border-bottom border-2 dark-accent fw-light"> Debugged by:
-                    <span class="heading-font gradient-text fw-semibold fst-italic"> {{post.user.username}} </span>
-                </h5>
-            </div>
-            <div class="d-flex justify-content-start mb-3 me-2 ms-4 light-accent">
-                <p class="card-text">{{post.content}}</p>
-            </div>
-            <div class="d-flex justify-content-end mb-3 me-2 ms-4 light-accent">
-                <p class="card-text fs-small">{{post.date}}</p>
+    <div class="card pb-0 mt-4 width-75">
+        <div class="card-body m-1">
+            <h3 class="card-title text-center fw-semibold dark-accent">{{post.title}}</h3>
+            <h6 class="card-subtitle mt-3 mb-3 pb-2 border-bottom border-2 dark-accent fw-light"> Debugged by:
+                <span class="heading-font gradient-text fw-semibold fst-italic fs-5"> {{post.user.username}} </span>
+            </h6>
+        </div>
+        <div class="d-flex justify-content-start mb-3 me-2 ms-4 light-accent">
+            <p class="card-text">{{post.content}}</p>
+        </div>
+        <div class="d-flex justify-content-end mb-3 me-2 ms-4 light-accent">
+            <p class="card-text fs-small fw-semibold me-2"> Posted on: <span class="gradient-text"> {{post.date}}</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+{{#each comments}}
+<div class="align-items-baseline h-100">
+    {{>comments-details}}
+</div>
+{{/each}}
+
+<div class="container border-top border-2 pt-3" style="margin-top: 10em !important;">
+    <div class="row d-flex align-items-center mt-5 h-100">
+        <div class="col ms-5">
+            <div class="card width-75 my-5">
+                <div id="comment-card" class="card-body p-4">
+                    <h4 id="{{post.id}}" class="gradient-text text-center mt-2 mb-4"> Leave a comment! </h4>
+                    <form id="newcomment" name="newcomment" method="post" action="newcomment">
+                        <div class="form-outline mb-4">
+                            <textarea type="text" id="comment" name="comment" class="form-control form-control-lg"
+                                required> </textarea>
+                        </div>
+                        <div id="textareaHelpBlock" class="mb-4 ms-1 dark-accent fs-small form-text">
+                            <i class="fa fa-bug gradient-text" aria-hidden="true"></i>
+                            Please be respectful, we are all learning here!
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" value="newcomment"
+                                class="button-hv btn p-2 d-flex justify-content-center flex-nowrap mb-3 mt-3 background-gradient light-shades">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
 </div>
+
+<script src="/js/comment.js"></script>
