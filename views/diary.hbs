@@ -1,11 +1,11 @@
-<div class="container-fluid">
-    <h3 class="fs-1 dark-accent fw-semibold mt-5 mb-3 ms-5 pt-4 text-center" style="letter-spacing: 4px;">{{diary.diary_name}}</h3>
-    <div>
-        {{#each diary.posts as |post|}}
-        {{> post-details}}
-        <div class="d-flex justify-content-end mt-1 mb-3 me-2 w-75">
-            <p class="dark-accent">Posted on: {{date}}</p>
-        </div>
-    </div>
-    {{/each}}
+<div class="d-flex mt-3 mb-2 pt-4 justify-content-center">
+    <h2 class="display-4 dark-accent fw-semibold heading-font text-center" style="letter-spacing: 4px;">
+        {{diary.diary_name}}</h2>
 </div>
+
+{{#each diary.posts as |post|}}
+{{> post-details}}
+<div class="d-flex justify-content-end mt-1 mb-3 me-2 w-75">
+    <p class="dark-accent">Posted on: {{date}}</p>
+</div>
+{{/each}}

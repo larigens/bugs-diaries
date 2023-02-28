@@ -31,6 +31,10 @@ a {
     text-decoration: none;
 }
 
+li {
+    list-style: none;
+}
+
 .width-50 {
     width: 50em;
 }
