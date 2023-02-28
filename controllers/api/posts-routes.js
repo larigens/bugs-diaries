@@ -41,5 +41,16 @@ router.put('/editpost', async (req, res) => {
   }
 });
 
+// Delete a post by its `id` value.
+router.delete("/delete", async (req, res) => {
+  try {
+    // Looks for the post based on id given in the request parameters and deletes the instance from the database.
+    await Post.destroy({ where: { id: req.body.id } });
+    res.status(200).json({ message: 'Post successfully deleted!' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
 
