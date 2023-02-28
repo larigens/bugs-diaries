@@ -1,1 +1,1 @@
-web: npm install && npm run seed && npm start
+web: npm i && node seeds/seed.js && node server.js

@@ -15,23 +15,6 @@ router.get('/', async (req, res) => {
     } catch (err) { res.status(500).json(err) }
 });
 
-// Get all diaries with more details for users who are logged in.
-router.get('/diaries', withAuth, async (req, res) => {
-    try {
-        const diariesData = await Diary.findAll({
-            include: [
-                { model: Post, as: 'posts', through: { attributes: [] }, include: [{ model: User }] }
-            ],
-        });
-        const diaries = diariesData.map((diary) => {
-            const diaryObj = diary.get({ plain: true });
-            const username = diaryObj.posts[0].user.username; // Extract the username from the first Post object associated with each Diary.
-            return { ...diaryObj, username: username }; // Creates and return a new object with the same properties as the original Diary object, but with an additional username property that contains the extracted username value. 
-        });
-        res.render('diaries', { diaries, logged_in: req.session.logged_in });
-    } catch (err) { res.status(500).json(err) }
-});
-
 // GET one diary.
 router.get('/diaries/:id', withAuth, async (req, res) => {
     try {
@@ -46,6 +29,20 @@ router.get('/diaries/:id', withAuth, async (req, res) => {
         }
         const diary = diaryData.get({ plain: true });
         res.render('diary', { diary, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
+});
+
+// GET all of the user's post.
+router.get('/posts', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({ where: { user_id: req.session.user_id } });
+        if (!postData) {
+            res.status(404).json({ message: "Post not found!!" });
+            return;
+        }
+        const posts = postData.map((post) => post.get({ plain: true }));
+
+        res.render('posts', { posts, logged_in: req.session.logged_in });
     } catch (err) { res.status(500).json(err) }
 });
 
