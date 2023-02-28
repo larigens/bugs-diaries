@@ -1,13 +1,13 @@
-<div class="jumbotron-fluid p-3 mb-5">
+<div class="d-flex justify-content-center pt-4">
     <h1 class="display-4 text-center m-4 mb-5 gradient-text heading-font"> The Bugs' Diaries </h1>
-    <div class="text-center m-4">
-        <img src="https://media0.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e472z9gid0fcuxula51o3g14eu3z3hcflaql83ww7o2&rid=giphy.gif&ct=g"
-            style="border-radius: 180px;" width="250" height="250" />
-    </div>
 </div>
 
 {{#if logged_in}}
-<div class="d-flex p-3 width-100 justify-content-center">
+<div class="text-center mb-5 pb-4">
+    <img src="https://media2.giphy.com/media/dtra4r7NXUlI5XRfOR/giphy.gif?cid=ecf05e47weeqdfrwlmrzhobyfeorhtufkm78l3271onkp2sx&rid=giphy.gif&ct=s" alt="a cup of get the code running gif"
+        style="border-radius: 180px;" width="250" height="250" />
+</div>
+<div class="d-flex p-3 pt-2 width-100 justify-content-center">
     <div class="row align-items-baseline">
         {{#each posts as |post|}}
         {{> post-home-details}}
@@ -15,14 +15,17 @@
     </div>
 </div>
 {{else}}
-<div class="d-flex mt-2">
-    <div class="hstack gap-2 col-md-5 mb-2 mx-auto justify-content-center">
-        <a href="/dashboard" class="background-gradient light-hv gradient-text fs-4 btn w-50 p-3"> Check us out! <i
-                class="fa fa-bug ms-1" aria-hidden="true"></i>
-        </a>
-        <div class="vr ms-4 me-4"></div>
-        <a href="/signup" class="background-gradient light-hv gradient-text fs-4 btn w-50 p-3"> Join our team! <i
-                class="fa fa-bug ms-1" aria-hidden="true"></i> </a>
-    </div>
+<div class="text-center mb-5 pb-4">
+    <img src="https://media2.giphy.com/media/jVqYgn09W8FHEf0BBS/giphy.gif" alt="first attempt in learning gif"
+        style="border-radius: 180px;" width="250" height="250" />
 </div>
+<div class="hstack gap-2 col-md-10 mb-2 mx-auto justify-content-center pt-5">
+    <a href="/dashboard" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-20"> Check us out! <i
+            class="fa fa-bug ms-1" aria-hidden="true"></i>
+    </a>
+    <div class="vr dark-accent ms-5 me-5"></div>
+    <a href="/signup" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-20"> Join our team! <i
+            class="fa fa-bug ms-1" aria-hidden="true"></i> </a>
+</div>
+
 {{/if}}
