@@ -155,11 +155,6 @@ textarea {
     margin-top: 60px !important;
 }
 
-.dashboard {
-    width: 65vw;
-    height: 30vh;
-}
-
 textarea {
     resize: none;
 }

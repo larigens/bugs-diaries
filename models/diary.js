@@ -20,7 +20,7 @@ Diary.init(
     },
     {
         sequelize, // Links to database connection.
-        timestamps: false, // Set to false to not add `created_at` and `updated_at` fields.
+        timestamps: true, // Set to true to add `created_at` and `updated_at` fields.
         freezeTableName: true, // Prevents sequelize from renaming the table.
         underscored: true, // Makes all variables that have 2 names to be separated by an underscore.
         modelName: "diary",

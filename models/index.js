@@ -6,6 +6,7 @@ const PostDiary = require('./postDiary');
 const Comment = require('./comment');
 
 //============================= Association Methods =============================//
+
 // Post belongsTo User.
 Post.belongsTo(User, {
     foreignKey: "user_id",

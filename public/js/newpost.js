@@ -17,7 +17,7 @@ const newpostHandler = async (event) => {
     });
 
     if (response.ok) {
-        document.location.replace('/posts');
+        location.replace('/posts');
     } else {
         alert('Failed to share post!')
         return;
@@ -31,13 +31,13 @@ function getSelectedDiaries() {
     const diariesArr = [...diaries];
     // Loop through each checkbox that was selected and push its ID to the array
     diariesArr.forEach(diary => {
-      if (diary.checked) {
-        diariesIdsArr.push(diary.id);
-      }
+        if (diary.checked) {
+            diariesIdsArr.push(diary.id);
+        }
     });
     return diariesIdsArr;
-  }
-  
+}
+
 
 document.getElementById('newpost').addEventListener('submit', newpostHandler);
 

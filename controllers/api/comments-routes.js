@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+// Creates new comment.
 router.post('/', async (req, res) => {
     try {
         // Verifies if the user is logged in to avoid posting without the username.

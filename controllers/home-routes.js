@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Diary, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// // GET all diaries for homepage.
+// GET all diaries for homepage.
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({

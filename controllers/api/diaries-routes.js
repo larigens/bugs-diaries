@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Diary } = require('../../models');
 
-// // GET all diaries for checkbox list.
+// GET all diaries for checkbox list.
 router.get('/', async (req, res) => {
     try {
         const diaryData = await Diary.findAll();

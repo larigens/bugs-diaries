@@ -1,7 +1,7 @@
 <h1 align="center"> Bugs Diaries </h1>
 
 <p align="center">
-    <img src="./public/images/apple-touch-icon.png" alt="logo" width="120px" height="120px" />
+    <img src="./public/images/logo.png" alt="logo" width="120px" height="120px" />
   <br><br>
   <i> Share insights, tips, 
     <br> and news related to technology! </i>

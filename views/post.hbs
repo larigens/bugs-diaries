@@ -1,7 +1,7 @@
 {{!-- Post Content --}}
 <div class="text-center">
-    <img src="https://media1.giphy.com/media/LPr6GX9jSL9nrrTt0M/giphy.gif?cid=ecf05e47r3fvxrp3n4fjoe4czeo732ntvkasimx7trv1bygf&rid=giphy.gif&ct=s" class="img-fluid mt-5 pt-4"
-        width="190px"  alt="talk nerdy to me gif">
+    <img src="https://media1.giphy.com/media/LPr6GX9jSL9nrrTt0M/giphy.gif?cid=ecf05e47r3fvxrp3n4fjoe4czeo732ntvkasimx7trv1bygf&rid=giphy.gif&ct=s"
+        class="img-fluid mt-5 pt-4" width="190px" alt="talk nerdy to me gif">
 </div>
 <div class="d-flex justify-content-center mt-3 pt-3 mb-5">
     <div class="card pb-0 mt-4 width-75">
@@ -30,27 +30,25 @@
 
 {{!-- Leave a Comment Section --}}
 <div class="d-flex justify-content-center border-top border-2 pt-3 mt-5">
-    <div class="d-flex justify-content-center">
-        <div class="card p-1 m-4 width-50">
-            <div id="comment-card" class="card-body p-4">
-                <h4 id="{{post.id}}" class="gradient-text text-center mt-2 mb-4"> Leave a comment! </h4>
-                <form id="newcomment" name="newcomment" method="post" action="newcomment">
-                    <div class="form-outline mb-4">
-                        <textarea type="text" id="comment" name="comment" class="form-control form-control-lg"
-                            required> </textarea>
-                    </div>
-                    <div id="textareaHelpBlock" class="mb-4 ms-1 dark-accent fs-small form-text">
-                        <i class="fa fa-bug gradient-text" aria-hidden="true"></i>
-                        Please be respectful, we are all learning here!
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" value="newcomment"
-                            class="btn p-2 ps-3 pe-3 d-flex justify-content-center flex-nowrap mb-3 mt-3 gradient light-shades">
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <div class="card p-1 m-4 width-50">
+        <div id="comment-card" class="card-body p-4">
+            <h4 id="{{post.id}}" class="gradient-text text-center mt-2 mb-4"> Leave a comment! </h4>
+            <form id="newcomment" name="newcomment" method="post" action="newcomment">
+                <div class="form-outline mb-4">
+                    <textarea type="text" id="comment" name="comment" class="form-control form-control-lg"
+                        required> </textarea>
+                </div>
+                <div id="textareaHelpBlock" class="mb-4 ms-1 dark-accent fs-small form-text">
+                    <i class="fa fa-bug gradient-text" aria-hidden="true"></i>
+                    Please be respectful, we are all learning here!
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" value="newcomment"
+                        class="btn p-2 ps-3 pe-3 d-flex justify-content-center flex-nowrap mb-3 mt-3 gradient light-shades">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

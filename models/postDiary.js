@@ -31,7 +31,7 @@ postDiary.init(
   },
   {
     sequelize, // Links to database connection.
-    timestamps: true, // Set to true to remove `created_at` and `updated_at` fields.
+    timestamps: false, // Set to false to not add `created_at` and `updated_at` fields.
     freezeTableName: true, // Prevents sequelize from renaming the table.
     underscored: true, // Makes all variables that have 2 names to be separated by an underscore.
     modelName: "post_diary",
