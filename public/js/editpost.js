@@ -6,17 +6,25 @@ const editPostHandler = async (event) => {
     const id = document.querySelector('.card-body').getAttribute('id');
 
     if (title && content && id) {
-        const response = await fetch('/api/posts/editpost', {
+        await fetch('/api/posts/editpost', {
             method: 'PUT',
             body: JSON.stringify({ title, content, id }),
             headers: { 'Content-Type': 'application/json' },
-        });
-        if (response.ok) {
-            document.location.replace('/posts');
-        } else {
-            alert('Failed to edit post');
-            return;
-        }
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
+            .then(data => {
+                console.log(data);
+                location.replace('/posts');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
     }
 }
 

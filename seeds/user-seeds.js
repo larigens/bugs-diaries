@@ -3,19 +3,43 @@ const { User } = require('../models')
 const usersData = [
     {
         username: 'larigens',
-        password: 'lari1234',
+        password: 'zanzameow',
     },
     {
-        username: 'zanzameow',
+        username: 'hpotter',
+        password: 'potter1234',
+    },
+    {
+        username: 'hgranger',
         password: 'meow1234',
     },
     {
-        username: 'barks',
-        password: 'barking1',
+        username: 'sblack',
+        password: 'barking123',
     },
     {
-        username: 'pets',
-        password: 'pets1234',
+        username: 'gweasley',
+        password: 'ginny1234',
+    },
+    {
+        username: 'adumbledore',
+        password: 'professor1881',
+    },
+    {
+        username: 'rweasley',
+        password: 'wizardking',
+    },
+    {
+        username: 'llovegood',
+        password: 'ravenclaw123',
+    },
+    {
+        username: 'dobby',
+        password: 'ilovesocks',
+    },
+    {
+        username: 'nlongbottom',
+        password: 'herbologyrocks',
     }
 ];
 

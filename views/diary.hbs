@@ -4,10 +4,11 @@
     <img src="https://media3.giphy.com/media/ZGbnid8SQaLvd5FnLz/giphy.gif?cid=ecf05e47avne7tbod4ddeion2cr7rbcgroq62hnui0hilnj3&rid=giphy.gif&ct=s"
         class="img-fluid rounded-circle flex-wrap" width="140px" alt="laptop gif">
 </div>
-
 {{#each diary.posts as |post|}}
-{{> post-details}}
-<div class="d-flex justify-content-end mt-1 mb-3 me-2 w-75">
-    <p class="dark-accent">Posted on: {{date}}</p>
+<div class="align-items-baseline">
+    {{> post-details}}
+</div>
+<div class="d-flex justify-content-end mt-1 mb-3 me-2">
+    <p class="dark-accent me-5">Posted on: <span class="gradient-text">{{date}} </span></p>
 </div>
 {{/each}}

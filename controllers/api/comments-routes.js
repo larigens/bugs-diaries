@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
-// Creates new comment.
+// POST request handler to create a new comment.
 router.post('/', async (req, res) => {
     try {
-        // Verifies if the user is logged in to avoid posting without the username.
+        // Verifies if the user is logged in to avoid posting the comment without the username.
         if (req.session.logged_in) {
             const newComment = await Comment.create({
                 comment: req.body.comment,

@@ -2,22 +2,29 @@ const path = require('path');
 const express = require('express'); // Framework for Node.js.
 const session = require('express-session'); // Package to add authentication.
 const exphbs = require('express-handlebars'); // View Engine.
+const handlebars = require('handlebars'); // View Engine.
 const routes = require('./controllers'); // Import routes.
 const sequelize = require('./config/connection'); // Imports sequelize connection.
 // Create a new sequelize store using the express-session package.
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const withAuth = require('./utils/auth');
-const resetSessionTimeout = require('./utils/timeout');
+const resetSessionTimeout = require('./utils/timeout'); // Imports middleware function.
 require("dotenv").config(); // To use environment variables.
 
 const app = express();
 const PORT = process.env.PORT || 5500;
 
 const hbs = exphbs.create({
-  withAuth, // Incorporate the custom helper methods.
+  handlebars: handlebars,
   layoutsDir: __dirname + '/views/layouts',
   partialsDir: __dirname + '/views/partials',
   extname: 'hbs', // Changes the extension of the files to hbs.
+});
+
+// Register a helper function to replace newlines with <br> tags.
+handlebars.registerHelper('breaklines', function (text) {
+  text = handlebars.Utils.escapeExpression(text);
+  text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+  return new handlebars.SafeString(text);
 });
 
 // Set up session middleware.
@@ -34,7 +41,7 @@ const sess = {
 app.set('view engine', 'hbs'); // Set Handlebars as the default template engine.
 app.engine('hbs', hbs.engine); // Sets handlebars configurations.
 
-// Define the middleware.
+// Define the middlewares.
 app.use(session(sess)) // Stores user data between HTTP requests. It creates a new session for the user and assigns them a cookie. 
 app.use(resetSessionTimeout); // This ensures that the session timeout is reset on each request, so the user is not logged out while they are active on the site.
 app.use(express.json()); // Parsing the incoming request bodies in a middleware before you handle it.

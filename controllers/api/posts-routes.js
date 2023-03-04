@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, PostDiary } = require('../../models');
 
-// Creates a new post.
+// POST request to create a new post.
 router.post('/newpost', async (req, res) => {
   try {
     // Verifies if the user is logged in to avoid posting without the username.
@@ -32,7 +32,7 @@ router.post('/newpost', async (req, res) => {
   }
 });
 
-// Updates a post by its `id` value.
+// PUT request to update a post by its `id` value.
 router.put('/editpost', async (req, res) => {
   try {
     // Verifies if the user is still logged in.
@@ -57,7 +57,7 @@ router.put('/editpost', async (req, res) => {
   }
 });
 
-// Delete a post by its `id` value.
+// DELETE request to delete a post by its `id` value.
 router.delete("/delete", async (req, res) => {
   try {
     // Verifies if the user is still logged in.

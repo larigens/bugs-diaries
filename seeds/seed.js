@@ -15,7 +15,7 @@ const seedAll = async () => {
     await seedPosts();
     console.log('\n----- POSTS SEEDED -----\n');
     await seedPostsDiaries();
-    console.log('\n----- POST-DIARY  SEEDED -----\n');
+    console.log('\n----- POST-DIARY SEEDED -----\n');
     await seedComments();
     console.log('\n----- COMMENTS SEEDED -----\n');
 

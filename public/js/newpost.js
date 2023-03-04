@@ -10,18 +10,26 @@ const newpostHandler = async (event) => {
 
     const diariesIds = await getSelectedDiaries();
 
-    const response = await fetch('/api/posts/newpost', {
+    await fetch('/api/posts/newpost', {
         method: 'POST',
         body: JSON.stringify({ title, content, diariesIds }),
         headers: { 'Content-Type': 'application/json' },
-    });
+    })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Something went wrong');
+            }
+        })
+        .then(data => {
+            console.log(data);
+            location.replace('/posts');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 
-    if (response.ok) {
-        location.replace('/posts');
-    } else {
-        alert('Failed to share post!')
-        return;
-    }
 }
 
 function getSelectedDiaries() {
@@ -37,7 +45,6 @@ function getSelectedDiaries() {
     });
     return diariesIdsArr;
 }
-
 
 document.getElementById('newpost').addEventListener('submit', newpostHandler);
 

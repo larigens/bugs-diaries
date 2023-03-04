@@ -1,5 +1,5 @@
 {
-  "name": "debug-diaries",
+  "name": "bugs-diaries",
   "version": "1.0.0",
   "description": "platform designed for sharing insights, tips, and news related to technology",
   "main": "server.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/larigens/debug-diaries.git"
+    "url": "git+https://github.com/larigens/bugs-diaries.git"
   },
   "keywords": [
     "nodejs",
@@ -26,9 +26,9 @@
   "author": "Larissa Guilherme",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/larigens/debug-diaries/issues"
+    "url": "https://github.com/larigens/bugs-diaries/issues"
   },
-  "homepage": "https://github.com/larigens/debug-diaries#readme",
+  "homepage": "https://github.com/larigens/bugs-diaries#readme",
   "devDependencies": {
     "sequelize": "^6.29.0"
   },

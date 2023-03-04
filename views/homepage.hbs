@@ -1,25 +1,26 @@
-<div class="d-flex justify-content-center pt-4">
-    <h1 class="display-4 text-center m-4 mb-5 gradient-text heading-font"> The Bugs' Diaries </h1>
+<div class="d-flex justify-content-center mt-5 pt-2">
+    <h1 class="display-4 text-center gradient-text heading-font"> The Bugs' Diaries </h1>
 </div>
 
 {{#if logged_in}}
-<div class="text-center mb-5 pb-4">
+<div class="text-center mb-5 mt-5 pt-2">
     <img src="https://media2.giphy.com/media/dtra4r7NXUlI5XRfOR/giphy.gif?cid=ecf05e47weeqdfrwlmrzhobyfeorhtufkm78l3271onkp2sx&rid=giphy.gif&ct=s"
         alt="a cup of get the code running gif" style="border-radius: 180px;" width="250" height="250" />
 </div>
-<div class="d-flex p-3 pt-2 width-100 justify-content-center">
-    <div class="row align-items-baseline">
-        {{#each posts as |post|}}
-        {{> post-home-details}}
-        {{/each}}
-    </div>
+<div class="d-flex mt-5 pt-5 mb-3 justify-content-center">
+    <h2 class="gradient-text text-center">Latest Posts </h2>
+</div>
+<div class="d-flex justify-content-center flex-wrap pt-4 pb-5 ms-3 me-3">
+    {{#each posts as |post|}}
+    {{> post-home-details}}
+    {{/each}}
 </div>
 {{else}}
-<div class="text-center mb-5 pb-4">
+<div class="text-center mb-5">
     <img src="https://media2.giphy.com/media/jVqYgn09W8FHEf0BBS/giphy.gif" alt="first attempt in learning gif"
         style="border-radius: 180px;" width="250" height="250" />
 </div>
-<div class="hstack gap-2 col-md-10 mb-2 mx-auto justify-content-center pt-5">
+<div class="hstack gap-2 col-md-10 m-3 mx-auto justify-content-center pt-3 pb-5">
     <a href="/dashboard" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-20"> Check us out! <i
             class="fa fa-bug ms-1" aria-hidden="true"></i>
     </a>
@@ -27,16 +28,15 @@
     <a href="/signup" class="background-gradient light-hv gradient-text fs-3 btn p-3 width-20"> Join our team! <i
             class="fa fa-bug ms-1" aria-hidden="true"></i> </a>
 </div>
-
-<div class="d-flex mt-5 pt-3 justify-content-center">
+<div class="d-flex mt-5 pt-2 justify-content-center">
     <h2 class="gradient-text text-center">Latest Posts </h2>
 </div>
-<div class="d-flex p-3 pt-2 width-100 justify-content-center">
-    <div class="row align-items-baseline justify-content-center">
+<div class="d-flex p-3 pt-2 mb-4 justify-content-center">
+    <div class="align-items-baseline">
         {{#each posts as |post|}}
-        <div class="d-flex justify-content-center">
-            <div class="card p-1 m-4 width-20 text-center">
-                <div class="card-body m-1">
+        <div class="d-flex justify-content-center flex-wrap">
+            <div class="card p-2 m-3 text-center" style="flex: 1; flex-grow: 1;">
+                <div class="card-body p-3">
                     <h5 class="card-title gradient-text" style="letter-spacing: 3px;">{{title}}</h5>
                 </div>
             </div>
@@ -44,5 +44,4 @@
         {{/each}}
     </div>
 </div>
-
 {{/if}}

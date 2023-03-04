@@ -1,29 +1,36 @@
 {{!-- Edit Post Section --}}
-<div class="d-flex justify-content-center mt-3 pt-5">
-    <div class="card pb-0 mt-4 w-50">
-        <div id="{{post.id}}" class="card-body m-1">
-            <div class="text-center">
-                <img src="https://media3.giphy.com/media/CEHtFH3rJ6xdhBUKIT/giphy.gif?cid=ecf05e47myqfw62d0jjmjuij60pohdxc9mkig7cy2ek5hhrc&rid=giphy.gif&ct=s"
-                    class="img-fluid rounded-circle" width="180px" alt="curly brackets gif">
+<section class="d-flex justify-content-center m-2 mb-4 mt-5 pt-5">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div id="{{post.id}}" class="card-body m-1">
+                        <div class="text-center">
+                            <img src="https://media3.giphy.com/media/CEHtFH3rJ6xdhBUKIT/giphy.gif?cid=ecf05e47myqfw62d0jjmjuij60pohdxc9mkig7cy2ek5hhrc&rid=giphy.gif&ct=s"
+                                class="img-fluid" width="180px" alt="curly brackets gif">
+                        </div>
+                        <form id="editpost" name="editpost" method="put" action="editpost"
+                            class="card-body cardbody-color p-lg-2">
+                            <div class="form-outline pt-1 mb-4">
+                                <input type="text" id="updatedTitle" class="form-control form-control-lg"
+                                    value="{{post.title}}"></input>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <textarea type="text" id="updatedContent" class="form-control form-control-lg"
+                                    rows="6">{{{breaklines post.content}}}</textarea>
+                            </div>
+                            <div class="d-flex justify-content-center mt-1">
+                                <button type="submit"
+                                    class="gradient light-shades btn ps-3 pe-3 d-flex justify-content-center flex-nowrap mb-2 mt-4 width-20">
+                                    Update!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form id="editpost" name="editpost" method="put" action="editpost">
-                <div class="form-outline pt-1 mb-4">
-                    <input type="text" id="updatedTitle" class="form-control form-control-lg"
-                        value="{{post.title}}"></input>
-                </div>
-                <div class="form-outline mb-4">
-                    <textarea type="text" id="updatedContent"
-                        class="form-control form-control-lg">{{post.content}}</textarea>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit"
-                        class="btn p-2 w-50 d-flex justify-content-center flex-nowrap mb-3 mt-3 gradient light-shades">
-                        Update!
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
+</section>
 
 <script src="/js/editpost.js"></script>

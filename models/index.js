@@ -1,11 +1,11 @@
-//============== Import Methods ==============//
+// Import Methods
 const Diary = require('./diary');
 const Post = require('./post');
 const User = require("./user");
 const PostDiary = require('./postDiary');
 const Comment = require('./comment');
 
-//============================= Association Methods =============================//
+// Association Methods
 
 // Post belongsTo User.
 Post.belongsTo(User, {
