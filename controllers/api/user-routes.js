@@ -28,18 +28,16 @@ router.post('/login', async (req, res) => {
       }
       // If the username and password are both valid, the code saves the user's ID and logged-in status to the session.
       else {
-        // When the user logs out, req.session.destroy() clears all session data for the current user, including user authentication information.
-        // So, I created a new session for the user - so the user can log back in immediately after logging out. 
-        req.session.user = {
-          id: userData.id,
-          username: userData.username,
-        };
         // Save the session back to the store, replacing the contents on the store with the contents in memory.
         req.session.save(() => {
           req.session.user_id = userData.id;
           req.session.logged_in = true;
+          // When the user logs out, req.session.destroy() clears all session data for the current user, including user authentication information.
+          // So, I added a new session for the username and password - so the user can log back in immediately after logging out. 
+          req.session.username = userData.username;
+          req.session.password = userData.password;
           // Returns a response with a status code of 200 and a message indicating that the user is now logged in.
-          res.status(200).json({ user: userData });
+          res.status(200).json({ userData });
         });
       }
     }
@@ -60,7 +58,9 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json({ user: userData });
+      req.session.username = userData.username,
+        req.session.password = userData.password,
+        res.status(200).json({ user: userData });
     });
   } catch (err) {
     res.status(400).json(err);

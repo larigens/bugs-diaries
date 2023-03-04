@@ -13,11 +13,12 @@ const loginHandler = async (event) => {
             if (response.ok) {
                 return response.json();
             } else {
+                alert(data.message); // Displays an alert to the user with the message returned by the server. 
                 throw new Error('Something went wrong');
             }
         })
         .then(data => {
-            alert(data.message); // Displays an alert to the user with the message returned by the server. 
+            console.log(data);
             document.location.replace('/dashboard');
         })
         .catch(error => {
