@@ -37,6 +37,7 @@ This blog site is constantly updated with new content, ensuring that developers 
 ## Table of Contents
 
 - [Description](#description)
+- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
   - [Cloning the Repository](#cloning-the-repository)
   - [Prerequisites](#prerequisites)
@@ -144,23 +145,27 @@ Once you run this, npm will begin the installation process of all of the current
 
 The following images shows the web application's appearance:
 
-<img src="./public/images/demo1.png" alt="App Screenshot" width="530px" height="260px" />
+<div align="center">
 
-<img src="./public/images/demo2.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo1.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo3.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo2.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo4.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo3.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo5.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo4.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo6.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo5.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo7.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo6.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo8.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo7.png" alt="App Screenshot" width="530px" height="280px" />
 
-<img src="./public/images/demo9.png" alt="App Screenshot" width="530px" height="260px" />
+<img src="./public/images/demo8.png" alt="App Screenshot" width="530px" height="280px" />
+
+<img src="./public/images/demo9.png" alt="App Screenshot" width="530px" height="280px" />
+
+</div>
 
 ## Usage
 
