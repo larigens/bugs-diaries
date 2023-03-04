@@ -28,6 +28,11 @@ router.post('/login', async (req, res) => {
       }
       // If the username and password are both valid, the code saves the user's ID and logged-in status to the session.
       else {
+        // Create a new session for the user.
+        req.session.user = {
+          id: userData.id,
+          username: userData.username,
+        };
         // Save the session back to the store, replacing the contents on the store with the contents in memory.
         req.session.save(() => {
           req.session.user_id = userData.id;
