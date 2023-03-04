@@ -28,7 +28,8 @@ router.post('/login', async (req, res) => {
       }
       // If the username and password are both valid, the code saves the user's ID and logged-in status to the session.
       else {
-        // Create a new session for the user.
+        // When the user logs out, req.session.destroy() clears all session data for the current user, including user authentication information.
+        // So, I created a new session for the user - so the user can log back in immediately after logging out. 
         req.session.user = {
           id: userData.id,
           username: userData.username,
