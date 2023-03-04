@@ -145,11 +145,23 @@ Once you run this, npm will begin the installation process of all of the current
 
 The following images shows the web application's appearance:
 
-<img src="./public/images/demo1.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo1.png" alt="App Screenshot" width="530px" height="260px" />
 
-<img src="./public/images/demo2.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo2.png" alt="App Screenshot" width="530px" height="260px" />
 
-<img src="./public/images/demo3.png" alt="App Screenshot" width="600px" height="265px" />
+<img src="./public/images/demo3.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo4.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo5.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo6.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo7.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo8.png" alt="App Screenshot" width="530px" height="260px" />
+
+<img src="./public/images/demo9.png" alt="App Screenshot" width="530px" height="260px" />
 
 ## Usage
 
@@ -202,9 +214,6 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 - [Express Handlebars](https://github.com/express-handlebars/express-handlebars)
 - [Connect Session Store using Sequelize](https://github.com/mweibel/connect-session-sequelize)
 - [Handlebars](https://handlebarsjs.com/guide/builtin-helpers.html#with)
-- [Postman API](https://www.postman.com/)
-- [Insomnia](https://insomnia.rest/)
-- [Passport](https://www.npmjs.com/package/passport)
 
 ## License
 
