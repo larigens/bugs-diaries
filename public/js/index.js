@@ -24,6 +24,24 @@ const deletePost = async (id) => {
     }
 }
 
+const editComment = (id) => {
+    location.replace(`/comment/${id}/editcomment`)
+}
+
+const deleteComment = async (id) => {
+    const response = await fetch('/api/comments/delete', {
+        method: 'DELETE',
+        body: JSON.stringify({ id }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+        location.reload();
+    } else {
+        alert('Failed to delete comment!');
+        return;
+    }
+}
+
 // Retrieves the username of the currently logged-in user. 
 if (window.location.pathname === '/dashboard') {
     fetchData = '/api/users';

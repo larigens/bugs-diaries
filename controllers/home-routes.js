@@ -70,8 +70,19 @@ router.get('/post/:id', withAuth, async (req, res) => { // The route is protecte
         else {
             const post = postData.get({ plain: true });
             // Fetches all comments associated with the post with the matching id parameter.
-            const commentData = await Comment.findAll({ where: { post_id: req.params.id }, include: [{ model: User, attributes: ['username'] }] });
-            const comments = commentData.map((comment) => comment.get({ plain: true }));
+            const commentData = await Comment.findAll({ where: { post_id: req.params.id }, include: [{ model: User }] });
+            const comments = commentData.map((comment) => {
+                const commentObj = comment.get({ plain: true });
+                let isUser = false;
+                // check if the comment's user_id matches the logged-in user's id
+                if (comment.user_id === req.session.user_id) {
+                    isUser = true;
+                    return { commentObj, isUser };
+                }
+                else {
+                    return { commentObj, isUser };
+                }
+            })
             res.render('post', { post, comments, logged_in: req.session.logged_in });
         }
     } catch (err) { res.status(500).json(err) }
@@ -83,6 +94,15 @@ router.get('/post/:id/editpost', withAuth, async (req, res) => {
         const postData = await Post.findByPk(req.params.id);
         const post = postData.get({ plain: true });
         res.render('editpost', { post, logged_in: req.session.logged_in });
+    } catch (err) { res.status(500).json(err) }
+});
+
+// GET requests to retrieve a single comment by ID to edit it.
+router.get('/comment/:id/editcomment', withAuth, async (req, res) => {
+    try {
+        const commentData = await Comment.findByPk(req.params.id);
+        const comment = commentData.get({ plain: true });
+        res.render('editcomment', { comment, logged_in: req.session.logged_in });
     } catch (err) { res.status(500).json(err) }
 });
 
