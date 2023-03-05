@@ -126,6 +126,7 @@ input::placeholder {
 .light-hv:hover {
     background-clip: inherit;
     -webkit-text-fill-color: var(--light-shades);
+    text-shadow: 2px 4px 2px var(--dark-accent);
 }
 
 .card,
