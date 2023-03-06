@@ -116,6 +116,83 @@ const postsData = [
         \nIn summary, the choice between MongoDB and MySQL depends on the specific needs of your application. If you are dealing with unstructured or semi-structured data and need flexibility and scalability, MongoDB may be the better choice. If you are dealing with structured data that requires strong consistency and transactional support, MySQL may be the better choice. `,
         user_id: 10,
     },
+    {
+        title: `Core concepts of Sequelize.`,
+        content: `One of the core concepts of Sequelize is the concept of models, which represent database tables in the application code.\n
+        In Sequelize, a model is defined as a JavaScript class that extends the base Model class provided by Sequelize. Each model represents a table in the database, and the properties of the class define the schema of the table. This includes the table name, column names, data types, and any constraints or indexes.\n
+        Sequelize supports a wide range of data types that can be used to define the schema of a table. These data types include the standard SQL data types such as INTEGER, STRING, BOOLEAN, DATE, and TEXT, as well as additional data types specific to Sequelize, such as JSON, UUID, and ENUM.\n
+        For example, to define a model for a simple blog post table with columns for title, body, and publishedDate, you could write:\n
+        const { Model, DataTypes } = require('sequelize');
+        const sequelize = new Sequelize('sqlite::memory:');
+
+        class Post extends Model {}
+        Post.init({
+            title: DataTypes.STRING,
+            body: DataTypes.TEXT,
+            publishedDate: DataTypes.DATE
+        }, { sequelize, modelName: 'post' });\n
+        In this example, we define a Post model that extends the base Model class provided by Sequelize. We then define the schema for the table using the init method, specifying the data types for each column.\n
+        Once a model is defined, it can be used to perform database operations such as creating, reading, updating, and deleting records. Sequelize provides a powerful query API that allows developers to perform complex database operations with ease.\n
+        Overall, Sequelize's support for models and data types makes it easy to define database schemas in Node.js applications and interact with them in a simple and intuitive way.\n`,
+        user_id: 1,
+    },
+    {
+        title: `Common MySQL command lines.`,
+        content: `1. mysql -u [username] -p: This command connects to the MySQL server with the specified username and prompts for a password.\n
+        2. show databases;: This command displays a list of all the databases on the server.\n
+        3. use [database_name];: This command selects the specified database as the default database for subsequent commands.\n
+        4. show tables;: This command displays a list of all the tables in the currently selected database.\n
+        5. describe [table_name];: This command displays information about the structure of the specified table, including column names, data types, and indexes.\n
+        6. select [column_names] from [table_name];: This command retrieves data from the specified table and displays it on the screen.\n
+        7. insert into [table_name] ([column_names]) values ([values]);: This command inserts a new row of data into the specified table.\n
+        8. update [table_name] set [column_name]=[value] where [condition];: This command updates one or more rows of data in the specified table.\n
+        9. delete from [table_name] where [condition];: This command deletes one or more rows of data from the specified table.\n
+        These are just a few examples of the many commands that can be used with MySQL. For a full list of commands, you can refer to the MySQL documentation.`,
+        user_id: 4,
+    },
+    {
+        title: `Handlebars and partials.`,
+        content: `Handlebars is a popular templating language used for creating dynamic HTML pages. It allows you to insert dynamic content into your HTML pages by using placeholders or variables that get replaced with real values at runtime. Handlebars also allows you to define reusable blocks of code called "partials" that can be included in multiple templates.\n
+        Partials in Handlebars are reusable templates that can be included within other templates. They are defined using the {{> partialName}} syntax, where partialName is the name of the partial file. Partial files are typically stored in a separate directory, and their name is prefixed with an underscore, such as _header.hbs or _footer.hbs.\n
+        To include a partial in a template, you simply use the {{> partialName}} syntax, where partialName is the name of the partial file without the underscore. For example, if you have a partial file named _header.hbs, you would include it in a template using {{> header}}.\n
+        Using partials can make your templates more modular and easier to maintain, since you can define reusable blocks of code that can be included in multiple templates.`,
+        user_id: 8,
+    },
+    {
+        title: `Fun fact about Git!`,
+        content: `One fun fact about Git is that its creator, Linus Torvalds, initially created it for managing the development of the Linux kernel. He was frustrated with the limitations of the existing version control systems at the time, and decided to create his own. He named it "Git" as a pun on the British slang term "git," which is roughly equivalent to "idiot." Torvalds has said that he chose the name because he didn't want something that sounded too serious or important, and because he wanted to make it clear that he wasn't taking himself too seriously. Despite its playful name, Git has become one of the most widely used and respected version control systems in the world, used by developers of all kinds for managing their code.`,
+        user_id: 2,
+    },
+    {
+        title: `Front-End Development Rocks!`,
+        content: `Front-end development is important for several reasons:\n
+        User experience: Front-end development plays a crucial role in creating a positive user experience. A well-designed and intuitive user interface can make it easy for users to navigate a website or application, find what they need, and accomplish their goals.\n
+        Mobile responsiveness: With the increasing use of mobile devices to access the internet, it is important for websites and applications to be responsive and mobile-friendly. Front-end developers ensure that websites and applications are optimized for different screen sizes and devices.\n
+        Performance: Front-end development can affect the performance of a website or application. For example, if the code is not optimized, the website or application may load slowly, which can negatively impact the user experience.\n
+        Accessibility: Front-end developers ensure that websites and applications are accessible to people with disabilities, such as those who are visually impaired or have motor disabilities. This includes using proper markup, adding alt text to images, and designing interfaces that are easy to navigate using assistive technology.\n
+        Branding and aesthetics: Front-end development also plays a role in creating a consistent branding and aesthetic for a website or application. By using appropriate color schemes, typography, and imagery, front-end developers can create a look and feel that reflects the brand and appeals to users.\n
+        Overall, front-end development is important because it directly impacts the user experience and can make or break the success of a website or application.`,
+        user_id: 9,
+    },
+    {
+        title: `Node and its built-in module system.`,
+        content: `Node.js is an open-source, cross-platform runtime environment that allows developers to run JavaScript code outside of a web browser. One thing you need to learn about Node.js is its built-in module system.\n
+        Node.js has a built-in module system that allows you to organize your code into reusable modules. Each module can have its own variables, functions, and classes, and can expose a public API to other modules. This makes it easier to manage and scale large projects, and encourages code reuse and modularity.\n
+        To create a module in Node.js, you can simply create a JavaScript file with the code you want to export, and use the module.exports object to define what parts of your module should be publicly available to other modules. For example, you can create a module called myModule with a function called myFunction like this:\n
+        // myModule.js
+        function myFunction() {
+            console.log('Hello, world!');
+        }
+
+        module.exports = { myFunction };\n
+        To use this module in another file, you can use the require function to import it:
+        // index.js
+        const myModule = require('./myModule');
+
+        myModule.myFunction(); // logs "Hello, world!"\n
+        This is just a basic example, but Node.js modules can be much more complex and can include external dependencies, asynchronous code, and other advanced features. By using Node.js modules, you can write modular, maintainable, and scalable code that can be easily reused in other projects.`,
+        user_id: 5,
+    },
 ];
 
 const seedPosts = () => Post.bulkCreate(postsData);

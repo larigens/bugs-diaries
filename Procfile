@@ -1,1 +1,1 @@
-web: npm i && node seeds/seed.js && node server.js
+web: npm i && node server.js
